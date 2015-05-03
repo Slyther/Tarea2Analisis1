@@ -28,14 +28,12 @@ void ChessPiece::mousePressEvent(QMouseEvent *ev)
     }else{
         if(parentWid->isMoving()){
             if(parentWid->selectedPiece->isPawn()){
-                foreach(QString TL, parentWid->possibleMoves){
-                    char letter = TL.at(0).toLatin1();
-                    char number = TL.at(1).toLatin1();
-                    QString diagonal1 = QString("").append(letter+1).append(number);
-                    QString diagonal2 = QString("").append(letter-1).append(number);
-                    if(TileName == diagonal1 || TileName == diagonal2){
-                        parentWid->doMovement(this);
-                    }
+                char letter = parentWid->possibleMoves.at(0).at(0).toLatin1();
+                char number = parentWid->possibleMoves.at(0).at(1).toLatin1();
+                QString diagonal1 = QString("").append(letter+1).append(number);
+                QString diagonal2 = QString("").append(letter-1).append(number);
+                if(TileName == diagonal1 || TileName == diagonal2){
+                    parentWid->doMovement(this);
                 }
             }else{
                 foreach(QString TL, parentWid->possibleMoves){
