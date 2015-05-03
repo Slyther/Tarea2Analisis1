@@ -53,7 +53,7 @@ void ChessPiece::validateTileNames()
         char number = parentWid->possibleMoves.at(i).at(1).toLatin1();
         if(letter > 'H' || letter < 'A' || number > '8' || number < '1'){
             parentWid->possibleMoves.remove(i);
-            i=0;
+            i=-1;
         }
     }
 }

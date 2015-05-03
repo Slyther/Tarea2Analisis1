@@ -28,44 +28,31 @@ void Pawn::calculateMovements()
     else
         EnemyPieceList = parentWid->player1->chessPieceList;
 
-    if(player->player == Player::Player1){
-        ACTION1:
-        QString movement = QString("").append(letter).append(number-1);
-        foreach(ChessPiece* chesspiece, EnemyPieceList){
-            if(chesspiece->TileName == movement){
-                parentWid->possibleMoves.push_back(movement);
-                return;
-            }
+
+    ACTION:
+    QString movement = QString("").append(letter).append((player->player == Player::Player1 ? number-1 : number+1));
+    foreach(ChessPiece* chesspiece, EnemyPieceList){
+        if(chesspiece->TileName == movement){
+            parentWid->possibleMoves.push_back(movement);
+            return;
         }
-        foreach(ChessPiece* chesspiece, AllyPieceList){
-            if(chesspiece->TileName == movement){
-                return;
-            }
+    }
+    foreach(ChessPiece* chesspiece, AllyPieceList){
+        if(chesspiece->TileName == movement){
+            return;
         }
-        parentWid->possibleMoves.push_back(movement);
-        if(number == '7'){
+    }
+    parentWid->possibleMoves.push_back(movement);
+    if(number == '7' || number == '2'){
+        switch(number){
+        case '7':
             number--;
-            goto ACTION1;
-        }
-    }else{
-        ACTION2:
-        QString movement = QString("").append(letter).append(number+1);
-        foreach(ChessPiece* chesspiece, EnemyPieceList){
-            if(chesspiece->TileName == movement){
-                parentWid->possibleMoves.push_back(movement);
-                return;
-            }
-        }
-        foreach(ChessPiece* chesspiece, AllyPieceList){
-            if(chesspiece->TileName == movement){
-                return;
-            }
-        }
-        parentWid->possibleMoves.push_back(movement);
-        if(number == '2'){
+            break;
+        case '2':
             number++;
-            goto ACTION2;
+            break;
         }
+        goto ACTION;
     }
 }
 
