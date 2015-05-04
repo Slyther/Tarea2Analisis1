@@ -14,6 +14,7 @@ public:
     virtual bool isPawn() = 0;
 protected:
     virtual void mousePressEvent(QMouseEvent *ev);
+    void beginMovementLogic();
     virtual void calculateMovements() = 0;
     void validateTileNames();
     Board* parentWid;

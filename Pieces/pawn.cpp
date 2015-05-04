@@ -5,9 +5,9 @@
 Pawn::Pawn(Board *parentWid, QString TileName, Player *player) : ChessPiece(parentWid, TileName, player)
 {
     if(player->player == Player::Player1){
-        setPixmap(QPixmap(":/Images/pawn_black.svg"));
-    }else{
         setPixmap(QPixmap(":/Images/pawn_white.svg"));
+    }else{
+        setPixmap(QPixmap(":/Images/pawn_black.svg"));
     }
 }
 
@@ -30,7 +30,7 @@ void Pawn::calculateMovements()
 
 
     ACTION:
-    QString movement = QString("").append(letter).append((player->player == Player::Player1 ? number-1 : number+1));
+    QString movement = QString("").append(letter).append((player->player == Player::Player1 ? number+1 : number-1));
     foreach(ChessPiece* chesspiece, EnemyPieceList){
         if(chesspiece->TileName == movement){
             parentWid->possibleMoves.push_back(movement);

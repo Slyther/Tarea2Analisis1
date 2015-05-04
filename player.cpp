@@ -18,11 +18,11 @@ void Player::initializePlayer()
     char row1;
     char row2;
     if(player == Player1){
-        row1 = '8';
-        row2 = '7';
-    }else{
         row1 = '1';
         row2 = '2';
+    }else{
+        row1 = '8';
+        row2 = '7';
     }
 
     for(char i = 65; i < 73; i++){

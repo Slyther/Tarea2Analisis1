@@ -16,6 +16,11 @@ ChessPiece::~ChessPiece()
 
 void ChessPiece::mousePressEvent(QMouseEvent *ev)
 {
+    beginMovementLogic();
+}
+
+void ChessPiece::beginMovementLogic()
+{
     if(player->isPlayerTurn(parentWid->getTurn())){
         if(parentWid->isMoving())
             parentWid->togglePossibleMoves();

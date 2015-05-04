@@ -4,9 +4,9 @@
 Rook::Rook(Board *parentWid, QString TileName, Player *player) : ChessPiece(parentWid, TileName, player)
 {
     if(player->player == Player::Player1){
-        setPixmap(QPixmap(":/Images/rook_black.svg"));
-    }else{
         setPixmap(QPixmap(":/Images/rook_white.svg"));
+    }else{
+        setPixmap(QPixmap(":/Images/rook_black.svg"));
     }
 }
 
