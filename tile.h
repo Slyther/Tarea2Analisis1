@@ -10,13 +10,15 @@ public:
     Tile(Board *parentWid, QString TileName);
     void toggle();
     inline QString getTileName(){ return TileName; }
+    virtual void enterEvent(QEvent *e);
+    virtual void leaveEvent(QEvent *e);
     ~Tile();
 private:
     Board* parentWid;
     QString TileName;
     virtual void paintEvent(QPaintEvent *ev);
     virtual void mousePressEvent(QMouseEvent *ev);
-    bool isActive;
+    bool isActive, underMouse;
 };
 
 #endif // TILE_H

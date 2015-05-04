@@ -34,6 +34,9 @@ void Board::validateClickedTile(QString TileName)
             return;
         }
     }
+    selectedPiece = 0;
+    togglePossibleMoves();
+    possibleMoves.clear();
 }
 
 void Board::togglePossibleMoves()
@@ -58,7 +61,9 @@ void Board::doMovement(ChessPiece *toDie)
             }
             delete toDie;
             turn++;
+            selectedPiece = 0;
             togglePossibleMoves();
+            possibleMoves.clear();
             break;
         }
     }

@@ -16,19 +16,27 @@ ChessPiece::~ChessPiece()
 
 void ChessPiece::mousePressEvent(QMouseEvent *ev)
 {
+    Q_UNUSED(ev);
     beginMovementLogic();
 }
 
 void ChessPiece::beginMovementLogic()
 {
     if(player->isPlayerTurn(parentWid->getTurn())){
-        if(parentWid->isMoving())
+        if(parentWid->isMoving()){
             parentWid->togglePossibleMoves();
+            if(parentWid->selectedPiece == this){
+                parentWid->selectedPiece = 0;
+                return;
+            }
+        }
         calculateMovements();
         validateTileNames();
         if(!parentWid->possibleMoves.isEmpty()){
+            parentWid->possibleMoves.push_back(TileName);
             parentWid->togglePossibleMoves();
             parentWid->selectedPiece = this;
+
         }
     }else{
         if(parentWid->isMoving()){
@@ -44,6 +52,7 @@ void ChessPiece::beginMovementLogic()
                 foreach(QString TL, parentWid->possibleMoves){
                     if(TileName == TL){
                         parentWid->doMovement(this);
+                        return;
                     }
                 }
             }
@@ -61,5 +70,15 @@ void ChessPiece::validateTileNames()
             i=-1;
         }
     }
+}
+
+void ChessPiece::enterEvent(QEvent *e)
+{
+    parentWid->tileMap[TileName]->enterEvent(e);
+}
+
+void ChessPiece::leaveEvent(QEvent *e)
+{
+    parentWid->tileMap[TileName]->leaveEvent(e);
 }
 

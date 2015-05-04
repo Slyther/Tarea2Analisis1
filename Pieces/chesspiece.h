@@ -17,6 +17,8 @@ protected:
     void beginMovementLogic();
     virtual void calculateMovements() = 0;
     void validateTileNames();
+    virtual void enterEvent(QEvent *e);
+    virtual void leaveEvent(QEvent *e);
     Board* parentWid;
 };
 

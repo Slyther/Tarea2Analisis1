@@ -103,7 +103,6 @@ void Queen::calculateMovements()
 
        /*------------------------------------------------------------*/
        AFTERFOR4:;
-       int numero6 = numero;
        for(char i = letter; i <= 'H'; i++){
            QString horizontal = QString("").append(i).append(number);
            foreach(ChessPiece* chesspiece, EnemyPieceList){
