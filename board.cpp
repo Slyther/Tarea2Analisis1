@@ -55,7 +55,7 @@ void Board::doMovement(ChessPiece *toDie)
     for(int i = 0; i < toDie->player->chessPieceList.length(); i++){
         if(toDie->player->chessPieceList.at(i) == toDie){
             toDie->player->chessPieceList.remove(i);
-            if(toDie->isQueen()){
+            if(toDie->isKing()){
                 //do endgame scenario here
                 return;
             }

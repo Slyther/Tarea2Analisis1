@@ -7,7 +7,7 @@ class Queen : public ChessPiece
 public:
     Queen(Board* parentWid, QString TileName, Player* player);
     ~Queen();
-    inline virtual bool isQueen(){ return true; }
+    inline virtual bool isKing() { return false; }
     inline virtual bool isPawn() { return false; }
 private:
     virtual void calculateMovements();

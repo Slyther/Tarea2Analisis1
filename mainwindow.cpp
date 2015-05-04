@@ -1,5 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QMessageBox>
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -20,7 +22,14 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_actionNew_Game_triggered()
 {
-    delete gameBoard;
-    gameBoard = new Board(ui->centralWidget);
-    gameBoard->show();
+    QMessageBox *msg = new QMessageBox(QMessageBox::Question, "New Game",
+                                       "Are you sure you want to start a new game?",
+                                       QMessageBox::Yes | QMessageBox::No, this, Qt::Popup);
+    msg->setWindowModality(Qt::NonModal);
+    int reply = msg->exec();
+    if(reply == QMessageBox::Yes){
+        delete gameBoard;
+        gameBoard = new Board(ui->centralWidget);
+        gameBoard->show();
+    }
 }
