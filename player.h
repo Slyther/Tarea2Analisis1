@@ -1,13 +1,13 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 #include <QVector>
-
 #include "Pieces/bishop.h"
 #include "Pieces/king.h"
 #include "Pieces/knight.h"
 #include "Pieces/pawn.h"
 #include "Pieces/queen.h"
 #include "Pieces/rook.h"
+
 class Board;
 class Player
 {

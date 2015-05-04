@@ -10,11 +10,6 @@ Bishop::Bishop(Board *parentWid, QString TileName, Player *player) : ChessPiece(
     }
 }
 
-Bishop::~Bishop()
-{
-
-}
-
 void Bishop::calculateMovements()
 {
 

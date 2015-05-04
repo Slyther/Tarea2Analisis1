@@ -10,11 +10,6 @@ Knight::Knight(Board *parentWid, QString TileName, Player *player) : ChessPiece(
     }
 }
 
-Knight::~Knight()
-{
-
-}
-
 void Knight::calculateMovements()
 {
     parentWid->possibleMoves.clear();

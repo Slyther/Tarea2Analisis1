@@ -2,8 +2,8 @@
 #define TILE_H
 #include <QLabel>
 #include <QPainter>
-class Board;
 
+class Board;
 class Tile : public QLabel
 {
 public:
@@ -12,7 +12,6 @@ public:
     inline QString getTileName(){ return TileName; }
     virtual void enterEvent(QEvent *e);
     virtual void leaveEvent(QEvent *e);
-    ~Tile();
 private:
     Board* parentWid;
     QString TileName;

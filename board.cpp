@@ -1,5 +1,7 @@
 #include "board.h"
+#include <QMessageBox>
 #include <QDebug>
+
 Board::Board(QWidget *parentWid) : QLabel(parentWid)
 {
     move(0, 0);
@@ -17,6 +19,15 @@ Board::Board(QWidget *parentWid) : QLabel(parentWid)
     player1 = new Player(Player::Player1, this);
     player2 = new Player(Player::Player2, this);
     update();
+}
+
+Board::~Board()
+{
+    delete player1;
+    delete player2;
+    foreach(Tile* current, tileMap){
+        delete current;
+    }
 }
 
 void Board::validateClickedTile(QString TileName)
@@ -55,23 +66,28 @@ void Board::doMovement(ChessPiece *toDie)
     for(int i = 0; i < toDie->player->chessPieceList.length(); i++){
         if(toDie->player->chessPieceList.at(i) == toDie){
             toDie->player->chessPieceList.remove(i);
-            if(toDie->isKing()){
-                //do endgame scenario here
-                return;
-            }
+            bool king = toDie->isKing();
+            int loser = toDie->player->player;
+            int winner = selectedPiece->player->player;
             delete toDie;
-            turn++;
             selectedPiece = 0;
             togglePossibleMoves();
             possibleMoves.clear();
+            if(king){
+                QMessageBox *msg = new QMessageBox(QMessageBox::Question, "Checkmate!",
+                                                   QString("Player %1 has eaten Player %2's King and won the match!\n Would you like to play again?").arg(winner).arg(loser),
+                                                   QMessageBox::Yes | QMessageBox::No, this, Qt::Popup);
+                msg->setWindowModality(Qt::NonModal);
+                int reply = msg->exec();
+                if(reply == QMessageBox::Yes){
+                    emit endGame();
+                }
+                return;
+            }
+            turn++;
             break;
         }
     }
-}
-
-Board::~Board()
-{
-
 }
 
 void Board::setTilePositions()

@@ -10,7 +10,9 @@ Player::Player(PlayerType player, Board *board)
 
 Player::~Player()
 {
-
+    foreach(ChessPiece* pointer, chessPieceList){
+        delete pointer;
+    }
 }
 
 void Player::initializePlayer()

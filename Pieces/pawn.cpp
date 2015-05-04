@@ -11,11 +11,6 @@ Pawn::Pawn(Board *parentWid, QString TileName, Player *player) : ChessPiece(pare
     }
 }
 
-Pawn::~Pawn()
-{
-
-}
-
 void Pawn::calculateMovements()
 {
     parentWid->possibleMoves.clear();

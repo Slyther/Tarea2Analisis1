@@ -6,7 +6,6 @@ class Knight : public ChessPiece
 {
 public:
     Knight(Board* parentWid, QString TileName, Player* player);
-    ~Knight();
     inline virtual bool isKing() { return false; }
     inline virtual bool isPawn() { return false; }
 private:

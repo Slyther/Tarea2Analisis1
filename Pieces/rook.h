@@ -6,7 +6,6 @@ class Rook : public ChessPiece
 {
 public:
     Rook(Board* parentWid, QString TileName, Player* player);
-    ~Rook();
     inline virtual bool isKing() { return false; }
     inline virtual bool isPawn() { return false; }
 private:

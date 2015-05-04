@@ -11,18 +11,12 @@ Tile::Tile(Board* parentWid, QString TileName) : QLabel(parentWid)
     setFixedSize(64, 64);
     raise();
     update();
-    this->setStyleSheet("QLabel {background-color: rgba(0,0,0,0%)}:hover{background-color: rgb(170,85,127);}");
 }
 
 void Tile::toggle()
 {
     isActive = !isActive;
     update();
-}
-
-Tile::~Tile()
-{
-
 }
 
 void Tile::paintEvent(QPaintEvent *ev)
@@ -61,12 +55,14 @@ void Tile::mousePressEvent(QMouseEvent *ev){
 
 void Tile::enterEvent(QEvent *e)
 {
+    Q_UNUSED(e);
     underMouse = true;
     update();
 }
 
 void Tile::leaveEvent(QEvent *e)
 {
+    Q_UNUSED(e);
     underMouse = false;
     update();
 }

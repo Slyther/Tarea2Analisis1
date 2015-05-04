@@ -9,11 +9,6 @@ ChessPiece::ChessPiece(Board *parentWid, QString TileName, Player *player) : QLa
     this->parentWid = parentWid;
 }
 
-ChessPiece::~ChessPiece()
-{
-
-}
-
 void ChessPiece::mousePressEvent(QMouseEvent *ev)
 {
     Q_UNUSED(ev);
@@ -36,7 +31,6 @@ void ChessPiece::beginMovementLogic()
             parentWid->possibleMoves.push_back(TileName);
             parentWid->togglePossibleMoves();
             parentWid->selectedPiece = this;
-
         }
     }else{
         if(parentWid->isMoving()){

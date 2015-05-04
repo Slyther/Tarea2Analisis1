@@ -10,11 +10,6 @@ Queen::Queen(Board *parentWid, QString TileName, Player *player) : ChessPiece(pa
     }
 }
 
-Queen::~Queen()
-{
-
-}
-
 void Queen::calculateMovements()
 {
     parentWid->possibleMoves.clear();

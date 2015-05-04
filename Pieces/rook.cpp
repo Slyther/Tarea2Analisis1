@@ -10,17 +10,11 @@ Rook::Rook(Board *parentWid, QString TileName, Player *player) : ChessPiece(pare
     }
 }
 
-Rook::~Rook()
-{
-
-}
-
 void Rook::calculateMovements()
 {
     parentWid->possibleMoves.clear();
     char letter = TileName.at(0).toLatin1();
     char number = TileName.at(1).toLatin1();
-    qDebug()<<"hai";
     QVector<ChessPiece*> EnemyPieceList;
     QVector<ChessPiece*> AllyPieceList = player->chessPieceList;
     if(parentWid->player1->player == player->player)
@@ -43,7 +37,7 @@ void Rook::calculateMovements()
         }
         parentWid->possibleMoves.push_back(horizontal);
     }
-    AFTERFOR1:;
+    AFTERFOR1:
     for(char i = letter; i >= 'A'; i--){
         QString horizontal = QString("").append(i).append(number);
         foreach(ChessPiece* chesspiece, EnemyPieceList){
@@ -59,7 +53,7 @@ void Rook::calculateMovements()
         }
         parentWid->possibleMoves.push_back(horizontal);
     }
-    AFTERFOR2:;
+    AFTERFOR2:
     for(char i = number; i <= '8'; i++){
         QString vertical = QString("").append(letter).append(i);
         foreach(ChessPiece* chesspiece, EnemyPieceList){
@@ -75,7 +69,7 @@ void Rook::calculateMovements()
         }
         parentWid->possibleMoves.push_back(vertical);
     }
-    AFTERFOR3:;
+    AFTERFOR3:
     for(char i = number; i >= '1'; i--){
         QString vertical = QString("").append(letter).append(i);
         foreach(ChessPiece* chesspiece, EnemyPieceList){

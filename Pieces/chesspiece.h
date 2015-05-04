@@ -8,7 +8,6 @@ class ChessPiece : public QLabel
 {
 public:
     ChessPiece(Board* parentWid, QString TileName, Player* player);
-    ~ChessPiece();
     QString TileName;
     Player* player;
     virtual bool isKing() = 0;

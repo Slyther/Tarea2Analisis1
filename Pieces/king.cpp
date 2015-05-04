@@ -10,11 +10,6 @@ King::King(Board *parentWid, QString TileName, Player *player) : ChessPiece(pare
     }
 }
 
-King::~King()
-{
-
-}
-
 void King::calculateMovements()
 {
     parentWid->possibleMoves.clear();
